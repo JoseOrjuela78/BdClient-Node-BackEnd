@@ -1,0 +1,3 @@
+FInicio|Factualización|departamentoId|nombreDepartamento|indicativo|departamentoActivo|pais
+6/9/2020|6/9/2020|25   |CUNDI|1|true|COL
+6/9/2020|6/9/2020|45   |cundi3|1|true|COL

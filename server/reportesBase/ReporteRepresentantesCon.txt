@@ -1,0 +1,4 @@
+Actualizacion|TipoId|Identificacion|Representante|Cargo|Comentario|Contraparte
+7/1/2020|cc  |11201755                 | REPRESENTANTE LEGAL |Representante Legal| SIN NOVEDAD |90000010001              - CONTTRAPARTE DE PRUEBA 009
+7/1/2020|cc  |11201700                 | ACCIONISTA DE PRUEBA|Accionista| SIN NOVEDAD |90000010001              - CONTTRAPARTE DE PRUEBA 009
+7/1/2020|nit |90000010001              | CONTTRAPARTE DE PRUEBA 009|Contraparte| SIN NOVEDAD EN LISTAS|90000010001              - CONTTRAPARTE DE PRUEBA 009

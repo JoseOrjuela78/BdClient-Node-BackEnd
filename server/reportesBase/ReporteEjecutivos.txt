@@ -1,0 +1,2 @@
+FInicio|Factualización|ejecutivoId|nombreEjecutivo|ejecActivo
+6/6/2020|6/8/2020|1|andres perez vasquez|true

@@ -1,0 +1,3 @@
+FInicio|Factualización|tipoId|tipoDocumento|estadotipoDocumento
+6/7/2020|6/9/2020|cc  |cedula|true
+6/7/2020|6/7/2020|ce  |cedula ex|true

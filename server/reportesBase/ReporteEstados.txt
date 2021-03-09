@@ -1,0 +1,3 @@
+FInicio|Factualización|estadoId|nombreEstado|estadoActivo
+6/7/2020|6/9/2020|1|pendientesx|true
+6/7/2020|6/7/2020|2|repetido|true

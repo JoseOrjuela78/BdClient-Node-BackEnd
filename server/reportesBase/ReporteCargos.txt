@@ -1,0 +1,5 @@
+FInicio|Factualización|cargoId|nombreCargo|estadoCargo
+6/7/2020|6/8/2020|1|gerentes 3434|true
+6/7/2020|6/7/2020|2|gerente2|false
+6/7/2020|6/7/2020|3|gerente3|false
+6/8/2020|6/8/2020|4|gerencia po|true

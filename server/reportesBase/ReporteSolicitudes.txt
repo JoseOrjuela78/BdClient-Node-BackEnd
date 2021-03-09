@@ -1,0 +1,6 @@
+Nit|Razon Social|Consecutivo|Ejecutivo|Tipo Solicitud|Estado|Causal|Fecha Solicitud|Fecha Respuesta
+830036108                |CONTRAPARTE PRUEBA 001|1014|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/06/28|2020/06/28
+830036108                |CONTRAPARTE PRUEBA 001|1018|andres perez vasquez|credito   nuevo|repetido|sin papeles|2020/06/29|2020/07/21
+830036108                |CONTRAPARTE PRUEBA 001|1019|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/06/29|2020/07/21
+90000010001              | CONTTRAPARTE DE PRUEBA 009|1020|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/07/01|2020/07/01
+900123456                | M & M & M|2003|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/07/23|2020/07/24

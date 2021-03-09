@@ -1,0 +1,3 @@
+FInicio|Factualización|causalId|nombreCausal|estadoCausal
+6/7/2020|6/8/2020|1|sin documentos|true
+6/7/2020|6/7/2020|2|sin papeles|true

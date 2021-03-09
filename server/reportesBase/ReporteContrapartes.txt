@@ -1,0 +1,3 @@
+Tipo Id|Identificacion|Razon Social|Orden|Pagare|EsCliente|EsProveedor|EsEmpleado|Municipio|Departamento|Observacion
+nit |830001001| CONTRAPARTE 002| o987098                 |true|true|true|true|NO APLICA|NO APLICA| SIN NOVEDAD
+nit |830036108|CONTRAPARTE PRUEBA 001|WERRE                    |true|true|false|false|Cerinza|BOYACA|OK CREADO

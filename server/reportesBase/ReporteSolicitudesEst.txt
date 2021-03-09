@@ -1,0 +1,4 @@
+Responsable|Radicado|Consecutivo|Identificacion|Nombre|Estado|Causal
+11201755                 |6/28/2020|1014|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |6/29/2020|1019|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |7/1/2020|1020|90000010001              | CONTTRAPARTE DE PRUEBA 009|pendientesx|sin documentos

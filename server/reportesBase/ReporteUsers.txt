@@ -1,0 +1,6 @@
+Tipo Id|Identificacion|Razon Social|Es Contraparte|Es PEP|Observacion
+nit |830001001| CONTRAPARTE 002|true|true| SIN NOVEDAD
+nit |222222222| CONTRAPARTE PRUEBA 004|false|false| SIN NOVEDAD
+cc  |333333333| REPRESENTANTE 003|false|false| SIN NOVEDAD
+nit |830036108|CONTRAPARTE PRUEBA 001|true|false|OK CREADO
+cc  |11111111|REPRESENTANTE|false|true|OK CREADO
