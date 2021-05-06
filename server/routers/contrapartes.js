@@ -20,6 +20,7 @@ app.get('/contraparte/:id', verificaToken, (req, res) => {
             err
         });
 
+
         res.json({
             ok: true,
             contraparteDB: result.recordsets

@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const mssql = require('mssql');
-var moment = require('moment');
-var request = require('request');
+const moment = require('moment');
+const { request } = require('request');
 const { verificaToken, verificaADMIN_ROLE } = require('../middlewares/autorizacion');
+const { getCompliance } = require('../middlewares/controllers/compliance');
 
 
 app.get('/user/buscar/:nit', verificaToken, (req, res) => {
@@ -73,7 +74,8 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     var request = new mssql.Request();
 
     let body = JSON.parse(req.body.json) // recibe la información json
-        //let body = req.body
+
+    //let body = req.body
     let fechaInicio = moment(new Date()).format('YYYYMMDD h:mm:ss');
 
     let escontraparte = body.escontraparte;
@@ -463,187 +465,7 @@ app.post('/tokenCompliance', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
 
 
-
-
-
-app.post('/listas', [verificaToken, verificaADMIN_ROLE], (req, res) => {
-
-    let body = JSON.parse(req.body.json)
-
-    //let token = body._id;
-    let tipoDoc = body.tipoIdentificacion.trim();
-    let datoCo = body.usuaNumeroIdentificacion;
-    let nombrePasaporte = body.usuaRazonSocial;
-
-
-    let tokenCompliance = () => {
-
-
-        const currentlyToken = new Promise((resolve, reject) => {
-
-
-
-            var optionsToken = {
-                'method': 'GET',
-                'url': 'https://app.compliance.com.co/validador/apiPublica/TokenService/token',
-                'headers': {
-                    'Authorization': 'Basic U0VEIEludDpOYXQxOTEyODYwOEFMRio='
-                }
-            };
-
-
-
-
-            request(optionsToken, function(error, response) {
-
-
-                if (error) {
-                    reject(error)
-                } else {
-
-
-
-
-                    let obtieneToken = () => {
-
-                        let token = JSON.parse(response.body).token;
-
-
-                        return token
-                    }
-
-
-
-                    resolve(obtieneToken());
-
-
-
-
-                };
-
-
-            })
-
-
-
-
-
-        });
-
-        return currentlyToken;
-
-
-
-    }
-
-
-
-
-    infoCompliance = (token, tipoDoc, datoCo, nombrePas) => {
-
-
-        var options = {
-            'method': 'POST',
-            'url': 'https://app.compliance.com.co/validador/ws/ConsultaConsolidadaService/consultaConsolidada/soloRiesgo/false',
-            'headers': {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'text/plain'
-            },
-
-            body: `{\r\n    \"tipoDocumento\":\"${tipoDoc}\",\r\n    \"datoConsultar\":\"${datoCo}\"\r\n,\r\n    \"nombrePasaporte\":\"${nombrePas}\"\r\n}`
-
-
-        };
-
-
-
-        request(options, function(error, response) {
-
-            let objetoCompliance = {
-
-                "nombre": 'No Consultado',
-                "presentaRiesgo": false,
-                "resultados": []
-            }
-
-            let resultado = {};
-
-
-            if (error) throw new Error(error);
-
-            let data = JSON.parse(response.body).error;
-
-
-            if (!data) {
-                data = JSON.parse(response.body);
-
-                objetoCompliance.nombre = data.nombre;
-
-                if (data.presentaRiesgo) {
-
-                    objetoCompliance.presentaRiesgo = true;
-
-                    data.resultados.forEach(element => {
-                        if (element.presentaRiesgo) {
-
-                            objetoCompliance.resultados.push("Riesgo :", element.lista);
-
-
-                        }
-
-                    });
-
-                    resultado = objetoCompliance;
-
-                } else {
-
-
-                    data.resultados.forEach(element => {
-                        if (element.presentaAdvertencia) {
-
-                            objetoCompliance.resultados.push("Novedad :", element.lista);
-
-                        };
-                    });
-
-
-                    if (objetoCompliance.resultados.length > 0) {
-                        objetoCompliance.presentaRiesgo = true;
-                    }
-
-
-                    resultado = objetoCompliance;
-
-                }
-
-            }
-
-
-
-
-
-            res.json({
-                ok: true,
-                resultado
-            });
-
-        });
-
-
-
-    };
-
-
-    tokenCompliance().then(token => infoCompliance(token, tipoDoc, datoCo, nombrePasaporte));
-
-
-    ;
-
-
-
-});
-
-
+app.post('/listas', [verificaToken, verificaADMIN_ROLE], getCompliance);
 
 
 

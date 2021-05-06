@@ -6,6 +6,76 @@ const mssql = require('mssql');
 const { verificaToken, verificaEJEC_ROLE, verificaADMIN_ROLE } = require('../middlewares/autorizacion');
 var moment = require('moment');
 
+app.post('/reporteCompliance', [verificaToken, verificaADMIN_ROLE], (req, res) => {
+
+    let body = JSON.parse(req.body.json) // recibe la información json
+        //let body = req;
+
+    escribirReporte = (data) => {
+
+        let nombre = data.nombre;
+        let id = data.datoConsultado;
+        let idConsulta = data.idConsulta;
+        let currently = moment().format('MMMM Do YYYY, h:mm:ss a');
+        let titulos = `lista|tipo|presentaRiesgo|tieneResultados|presentaAdvertencia`;
+        let resultados = data.resultados;
+        let totalFuentes = data.totalFuentesConsultadas;
+        let presentaRiesgo = data.presentaRiesgo;
+        let listasConsultadas = '';
+        resultados.forEach(element => {
+            listasConsultadas += `${element.lista}|${element.tipo}|${element.presentaRiesgo}|${element.tieneResultados}|${element.presentaAdvertencia}\n`
+        })
+
+        let document = `Fecha : ${currently} Consulta #: ${idConsulta}\nDatos consultados: ${nombre} ${id}\n${titulos}\n${listasConsultadas}\nTotal fuentes: ${totalFuentes}\nPresenta Riesgo: ${presentaRiesgo}`;
+
+
+        fs.writeFile(`./reportesBase/${idConsulta} ${nombre}.id_${id}.txt`, document, (err) => {
+
+            if (err) throw err;
+
+
+            //console.log('The file has been saved!');
+
+
+            res.download(path.join(__dirname, '../reportesBase', `${idConsulta} ${nombre}.id_${id}.txt`), `${idConsulta} ${nombre}.id_${id}.txt`, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+
+                borrarReporte(`${idConsulta} ${nombre}.id_${id}.txt`);
+                //console.log('descargado');
+            });
+
+
+        });
+
+
+
+
+    }
+
+
+    borrarReporte = (name) => {
+
+
+
+        fs.unlinkSync(`./reportesBase/${name}`, (err) => {
+
+            if (err) throw err;
+
+            return;
+        });
+    }
+
+
+    escribirReporte(body);
+
+});
+
+
+
+
+
 app.get('/reporteUsers', [verificaToken, verificaEJEC_ROLE], (req, res) => {
 
     var request = new mssql.Request();
@@ -152,29 +222,7 @@ app.get('/reporteRepresentantes', [verificaToken, verificaEJEC_ROLE], (req, res)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.get('/reporteSolicitudes', [verificaToken, verificaEJEC_ROLE], (req, res) => {
+app.get('/reporteSolicitudes', /*[verificaToken, verificaEJEC_ROLE],*/ (req, res) => {
 
     var request = new mssql.Request();
 
@@ -210,7 +258,7 @@ app.get('/reporteSolicitudes', [verificaToken, verificaEJEC_ROLE], (req, res) =>
                 if (err) {
                     console.log(err);
                 }
-                //console.log('descargado');
+                console.log('Reportes Solicitudes descargado');
             });
 
         });

@@ -190,6 +190,9 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     }
 
     let estadoId = body.IdEstado;
+
+    actualizarPagare(contNumeroIdentificacion, estadoId);
+
     let causalId = body.IdCausal;
 
     let insert1 = `ALTA_solicitudes '${soliActualizacion}','${soliFechaExpedicionCcio}','${soliAnoRenovado}','${soliApruebaFormato}','${soliApruebaListasRestrictivas}','${soliApruebaDatacredito}','${soliApruebaCartera}','${soliApruebaReferencias}','${soliFechaRadicacion}','${soliFechaSolucion}','${soliCupoAprobado}','${soliCupoAsignado}','${soliFechaEnvioPagare}','${soliFechaRecibidoPagare}','${soliComentarios}','${usuario}','${soliFecha}','${ejecutivoId}','${tipoSolicitudId}','${contNumeroIdentificacion}','${soliCupoActual}','${soliCupoSolicitado}','${estadoId}','${causalId}','message OUTPUT'`
@@ -317,6 +320,9 @@ app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     }
 
     let estadoId = body.IdEstado;
+
+    actualizarPagare(contNumeroIdentificacion, estadoId);
+
     let causalId = body.IdCausal;
 
     let insert1 = `UPDATE_solicitudes '${soliConsecutivo}','${soliActualizacion}','${soliFechaExpedicionCcio}','${soliAnoRenovado}','${soliApruebaFormato}','${soliApruebaListasRestrictivas}','${soliApruebaDatacredito}','${soliApruebaCartera}','${soliApruebaReferencias}','${soliFechaRadicacion}','${soliFechaSolucion}','${soliCupoAprobado}','${soliCupoAsignado}','${soliFechaEnvioPagare}','${soliFechaRecibidoPagare}','${soliComentarios}','${usuario}','${ejecutivoId}','${tipoSolicitudId}','${contNumeroIdentificacion}','${soliCupoActual}','${soliCupoSolicitado}','${estadoId}','${causalId}','message OUTPUT'`
@@ -373,6 +379,50 @@ app.delete('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
 
 });
+
+
+let actualizarPagare = (nit, estado) => {
+
+    console.log(estado);
+
+    var request = new mssql.Request();
+
+    if (estado === 8) {
+
+        let insert1 = `UPDATEPagare_users '${nit}','@message OUTPUT'`;
+
+        request.query(insert1, (err, userDB) => {
+
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            //console.log('user actualizado');
+        });
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

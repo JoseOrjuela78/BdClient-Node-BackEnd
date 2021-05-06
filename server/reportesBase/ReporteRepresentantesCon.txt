@@ -1,4 +1,3 @@
 Actualizacion|TipoId|Identificacion|Representante|Cargo|Comentario|Contraparte
-7/1/2020|cc  |11201755                 | REPRESENTANTE LEGAL |Representante Legal| SIN NOVEDAD |90000010001              - CONTTRAPARTE DE PRUEBA 009
-7/1/2020|cc  |11201700                 | ACCIONISTA DE PRUEBA|Accionista| SIN NOVEDAD |90000010001              - CONTTRAPARTE DE PRUEBA 009
-7/1/2020|nit |90000010001              | CONTTRAPARTE DE PRUEBA 009|Contraparte| SIN NOVEDAD EN LISTAS|90000010001              - CONTTRAPARTE DE PRUEBA 009
+8/19/2020|cc  |11111111                 |REPRESENTANTE|Vicepresidente|OK CREADO|830001001                - CONTRAPARTE 002
+10/5/2020|nit |830001001                | CONTRAPARTE 002|Contraparte| SIN NOVEDAD|830001001                - CONTRAPARTE 002

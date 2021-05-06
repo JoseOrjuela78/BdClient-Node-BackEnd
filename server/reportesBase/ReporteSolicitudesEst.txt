@@ -1,4 +1,20 @@
 Responsable|Radicado|Consecutivo|Identificacion|Nombre|Estado|Causal
-11201755                 |6/28/2020|1014|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
-11201755                 |6/29/2020|1019|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
 11201755                 |7/1/2020|1020|90000010001              | CONTTRAPARTE DE PRUEBA 009|pendientesx|sin documentos
+11201755                 |7/23/2020|2003|900123456                | M & M & M|pendientesx|sin documentos
+11201755                 |8/19/2020|2010|830001001                | CONTRAPARTE 002|pendientesx|sin documentos
+11201755                 |8/19/2020|2016|830001001                | CONTRAPARTE 002|pendientesx|sin documentos
+11201755                 |8/19/2020|2018|830001001                | CONTRAPARTE 002|pendientesx|sin papeles
+11201755                 |8/23/2020|3007|11201700567              | CONTRAPARTEPARTE CONTRAPARTE|pendientesx|sin documentos
+11201755                 |8/23/2020|3008|11201700567              | CONTRAPARTEPARTE CONTRAPARTE|pendientesx|sin documentos
+11201755                 |8/23/2020|3009|11201700567              | CONTRAPARTEPARTE CONTRAPARTE|pendientesx|sin documentos
+11201755                 |8/23/2020|3010|11201700567              | CONTRAPARTEPARTE CONTRAPARTE|pendientesx|sin documentos
+11201755                 |8/23/2020|3011|11201700567              | CONTRAPARTEPARTE CONTRAPARTE|pendientesx|sin documentos
+11201755                 |9/10/2020|3058|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |9/10/2020|3060|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |9/10/2020|3064|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |9/10/2020|3073|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |9/10/2020|3074|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |9/10/2020|3075|830036108                |CONTRAPARTE PRUEBA 001|pendientesx|sin documentos
+11201755                 |2/24/2021|3081|830001001                | CONTRAPARTE 002|pendientesx|sin documentos
+11201755                 |2/26/2021|3085|830001001                | CONTRAPARTE 002|pendientesx|sin documentos
+11201755                 |2/26/2021|3087|830001001                | CONTRAPARTE 002|pendientesx|sin documentos

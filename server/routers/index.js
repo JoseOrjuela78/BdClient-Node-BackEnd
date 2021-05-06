@@ -18,5 +18,10 @@ app.use(require('./contrapartes'));
 app.use(require('./representantes'));
 app.use(require('./solicitudes'));
 app.use(require('./score'));
+app.use(require('./viabilidad'));
+app.use(require('./uploads'));
+app.use(require('./ciiu'));
+app.use(require('./viabRepresentantes'));
+
 
 module.exports = app;
