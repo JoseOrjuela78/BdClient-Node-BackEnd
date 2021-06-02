@@ -383,8 +383,6 @@ app.delete('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
 let actualizarPagare = (nit, estado) => {
 
-    console.log(estado);
-
     var request = new mssql.Request();
 
     if (estado === 8) {

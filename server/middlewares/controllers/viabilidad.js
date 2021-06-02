@@ -41,6 +41,8 @@ postViabilidad = async(req, res) => {
 
     let viab = JSON.parse(req.body.json);
 
+    console.log(viab);
+
     upViabilidad = (comentario) => {
 
 
@@ -96,7 +98,6 @@ putViabilidad = async(req, res) => {
 
     let viab = JSON.parse(req.body.json);
 
-    console.log(viab);
 
     upDateViabilidad = (comentario) => {
 

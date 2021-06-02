@@ -28,7 +28,6 @@ const getCompliance = (req, res) => {
     }
 
 
-
     const tokenCompliance = () => {
 
 

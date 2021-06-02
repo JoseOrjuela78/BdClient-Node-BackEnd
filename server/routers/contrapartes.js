@@ -111,6 +111,21 @@ app.put('/contraparteE/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
 
 
+let baseContrapartes = () => {
+    const Base = [
+        {},
+        {},
+        {},
+        {}
+    ]
+
+    console.log(Base.length);
+
+
+}
+
+
+
 
 
 
