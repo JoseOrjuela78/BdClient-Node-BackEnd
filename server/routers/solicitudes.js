@@ -99,6 +99,7 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let body = JSON.parse(req.body.json); // recibe la información json
     let fechaInicio = moment(new Date()).format('YYYYMMDD h:mm:ss');
 
+
     let soliActualizacion = fechaInicio;
 
     let soliFechaExpedicionCcio = body.soliFechaExpedicionCcio;
@@ -167,7 +168,7 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         soliFechaRecibidoPagare = '19000101 12:00:00'
     }
 
-    let soliComentarios = decodeURI(body.soliComentarios);
+    let soliComentarios = body.soliComentarios;
     if (!soliComentarios) {
         soliComentarios = "Sin Comentario"
     }
@@ -298,7 +299,7 @@ app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         soliFechaRecibidoPagare = '19000101 12:00:00'
     }
 
-    let soliComentarios = decodeURI(body.soliComentarios);
+    let soliComentarios = body.soliComentarios;
     if (!soliComentarios) {
         soliComentarios = "Sin Comentario"
     }

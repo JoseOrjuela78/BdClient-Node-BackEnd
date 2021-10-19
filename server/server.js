@@ -3,22 +3,53 @@ var cors = require('cors');
 const app = express();
 const mssql = require('mssql');
 const path = require('path');
+const { pruebaToken } = require('./middlewares/controllers/compliance');
+
+
+//var Connection = require('tedious').Connection;
+
 
 app.set('port', process.env.PORT || 3000);
 //Variables de conexión
+/*
+var config = {
+    server: '127.0.0.1', //update me
+    authentication: {
+        type: 'default',
+        options: {
+            userName: 'SA', //update me
+            password: '19780914Jao' //update me
+        }
+    },
+    options: {
+        // If you are on Microsoft Azure, you need encryption:
+        encrypt: true,
+        enableArithAbort: true,
+        database: 'BdClient' //update me
+    }
+};
+
+*/
+
+
 
 var config = {
     user: 'SA',
     password: '19780914Jao',
-    server: '192.168.0.30',
+    server: '127.0.0.1', //'192.168.0.30',
     port: 1433,
     database: 'BdClient',
     options: {
-        enableArithAbort: true
+        enableArithAbort: true,
+        encrypt: false
     }
-}
+};
 
-/* para activar en produccion
+
+
+/*
+
+para activar en produccion
 
 var config = {
     user: 'SACARTERA',
@@ -57,6 +88,28 @@ app.use(express.static(path.resolve(__dirname, '../public')))
 // configuracion global de rutas
 app.use(require('./routers/index'));
 
+/*
+var connection = new Connection(config);
+
+connection.on('connect', function(err) {
+    // If no error, then good to proceed.
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Base de datos SQL On Line');
+        app.listen(app.get('port'), () => {
+            console.log('Escuchando por el puerto: ', app.get('port'));
+        });
+    }
+
+});
+
+connection.connect();
+
+*/
+
+pruebaToken();
+
 
 var connetion = mssql.connect(config, (err, res) => {
         if (err) {
@@ -65,7 +118,7 @@ var connetion = mssql.connect(config, (err, res) => {
             console.log('Base de datos SQL On Line');
             app.listen(app.get('port'), () => {
                 console.log('Escuchando por el puerto: ', app.get('port'));
-            })
+            });
         }
 
 

@@ -39,8 +39,11 @@ app.put('/contraparte/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     var request = new mssql.Request();
 
+
+
     let ids = req.params.id;
     let body = JSON.parse(req.body.json);
+
     let contFechaActualizacion = moment(new Date()).format('YYYYMMDD h:mm:ss');
     let contNombre = body.contNombre;
     let contActivo = 1;
@@ -49,6 +52,7 @@ app.put('/contraparte/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let contFechaCupoVigente = contFechaActualizacion;
     let usuario = req.usuario.identificacion;
 
+    baseContrapartes();
 
     var insert1 = `UPDATE_contrapartes '${contFechaActualizacion}','${contNombre}','${contActivo}','${ids}','${contObservacion}','${contCupoVigente}','${contFechaCupoVigente}','${usuario}','@message output'`
 
@@ -76,6 +80,7 @@ app.put('/contraparteE/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
     var request = new mssql.Request();
 
+
     let ids = req.params.id;
     let body = JSON.parse(req.body.json);
     let contFechaActualizacion = moment(new Date()).format('YYYYMMDD h:mm:ss');
@@ -85,7 +90,6 @@ app.put('/contraparteE/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => 
     let contCupoVigente = 0;
     let contFechaCupoVigente = contFechaActualizacion;
     let usuario = req.usuario.identificacion;
-
 
     var insert1 = `UPDATE_contrapartes '${contFechaActualizacion}','${contNombre}','${contActivo}','${ids}','${contObservacion}','${contCupoVigente}','${contFechaCupoVigente}','${usuario}','@message output'`
 
@@ -117,9 +121,19 @@ let baseContrapartes = () => {
         {},
         {},
         {}
-    ]
+    ];
 
-    console.log(Base.length);
+    let largo = Base.length;
+    let contador = 0;
+
+    while (contador <= largo) {
+
+        console.log(contador);
+
+        contador += 1;
+    }
+
+
 
 
 }

@@ -4,7 +4,7 @@ const mssql = require('mssql');
 const moment = require('moment');
 const { request } = require('request');
 const { verificaToken, verificaADMIN_ROLE } = require('../middlewares/autorizacion');
-const { getCompliance } = require('../middlewares/controllers/compliance');
+const { pruebaToken, pruebaGetCompliance } = require('../middlewares/controllers/compliance');
 
 
 app.get('/user/buscar/:nit', verificaToken, (req, res) => {
@@ -73,8 +73,7 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     var request = new mssql.Request();
 
-    let body = JSON.parse(req.body.json) // recibe la información json
-
+    let body = JSON.parse(req.body.json); // recibe la información json
     //let body = req.body
     let fechaInicio = moment(new Date()).format('YYYYMMDD h:mm:ss');
 
@@ -84,14 +83,14 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         escontraparte = false;
     }
 
-    let usuaPEP = body.esPEP
+    let usuaPEP = body.esPEP;
     if (!usuaPEP) {
         usuaPEP = false;
     }
 
     let usuaFechaMatricula = moment(body.usuaFechaMatricula).format('YYYYMMDD');
     let usuaFechaNacimiento = moment(body.usuaFechaNacimiento).format('YYYYMMDD');
-    let usuaObservacion = decodeURI(body.usuaObservacion);
+    let usuaObservacion = body.usuaObservacion;
 
     let usuaOrden = body.usuaOrden;
 
@@ -139,7 +138,7 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let usuaNumeroIdentificacion = body.usuaNumeroIdentificacion;
     let tipoId = body.tipoIdentificacion;
     let usuaFechaInicio = fechaInicio;
-    let usuaRazonSocial = decodeURI(body.usuaRazonSocial);
+    let usuaRazonSocial = body.usuaRazonSocial;
     let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${body.usuaRazonSocial}`;
 
     let municipios;
@@ -222,7 +221,7 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     }
 
 
-    let usuaObservacion = decodeURI(body.usuaObservacion);
+    let usuaObservacion = body.usuaObservacion;
 
     let usuaOrden = body.usuaOrden;
 
@@ -270,7 +269,7 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let usuaNumeroIdentificacion = id;
     let tipoId = body.tipoIdentificacion;
     let usuaFechaActualizacion = fechaInicio;
-    let usuaRazonSocial = decodeURI(body.usuaRazonSocial);
+    let usuaRazonSocial = body.usuaRazonSocial;
     let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${body.usuaRazonSocial}`;
 
     let municipios;
@@ -452,12 +451,7 @@ function DeleteRepresentantes(usuaNumeroIdentificacion, usuario) {
 
 
 
-app.post('/tokenCompliance', [verificaToken, verificaADMIN_ROLE], (req, res) => {
-
-
-
-
-});
+app.get('/tokenCompliance', pruebaToken);
 
 
 
@@ -465,7 +459,7 @@ app.post('/tokenCompliance', [verificaToken, verificaADMIN_ROLE], (req, res) => 
 
 
 
-app.post('/listas', [verificaToken, verificaADMIN_ROLE], getCompliance);
+app.post('/listas', [verificaToken, verificaADMIN_ROLE], pruebaGetCompliance);
 
 
 

@@ -76,7 +76,7 @@ app.post('/representante', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let cargoId = body.cargos;
     let usuario = req.usuario.identificacion;
 
-    var insert1 = `ALUP_representantes '${contNumeroIdentificacion}${usuaNumeroIdentificacion}','${fechaInicio}','${reprActivo}','${usuario}','${contNumeroIdentificacion}','${usuaNumeroIdentificacion}','${cargoId}','@message output'`
+    var insert1 = `ALUP_representantes '${contNumeroIdentificacion}${usuaNumeroIdentificacion}','${fechaInicio}','${reprActivo}','${usuario}','${contNumeroIdentificacion}','${usuaNumeroIdentificacion}','${cargoId}','@message output'`;
 
     request.query(insert1, (err, result) => {
 

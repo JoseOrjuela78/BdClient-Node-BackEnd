@@ -1,22 +1,7 @@
 Nit|Razon Social|Consecutivo|Ejecutivo|Tipo Solicitud|Estado|Causal|Fecha Solicitud|Fecha Respuesta
-90000010001              | CONTTRAPARTE DE PRUEBA 009|1020|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/07/01|2020/07/01
-900123456                | M & M & M|2003|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/07/23|2020/07/24
-900800800                | CONTRAPARTE DE PRUEBA 0009|2006|andres perez vasquez|cliente nuevo|repetido|sin documentos|2020/08/11|2020/08/11
-830001001                | CONTRAPARTE 002|2010|MARIETA PAZ|cliente nuevo|pendientesx|sin documentos|2020/08/19|2020/08/19
-830001001                | CONTRAPARTE 002|2016|MARIETA PAZ|credito   nuevo|pendientesx|sin documentos|2020/08/19|2021/02/25
-830001001                | CONTRAPARTE 002|2018|andres perez vasquez|credito   nuevo|pendientesx|sin papeles|2020/08/19|2021/02/25
-11201700567              | CONTRAPARTEPARTE CONTRAPARTE|3007|MARIETA PAZ|credito   nuevo|pendientesx|sin documentos|2020/08/23|2020/09/10
-11201700567              | CONTRAPARTEPARTE CONTRAPARTE|3008|MARIETA PAZ|credito   nuevo|pendientesx|sin documentos|2020/08/23|2021/03/16
-11201700567              | CONTRAPARTEPARTE CONTRAPARTE|3009|MARIETA PAZ|cliente nuevo|pendientesx|sin documentos|2020/08/23|2020/08/23
-11201700567              | CONTRAPARTEPARTE CONTRAPARTE|3010|andres perez vasquez|credito   nuevo|pendientesx|sin documentos|2020/08/23|2020/08/23
-11201700567              | CONTRAPARTEPARTE CONTRAPARTE|3011|andres perez vasquez|credito   nuevo|pendientesx|sin documentos|2020/08/23|2020/08/23
-830036108                |CONTRAPARTE PRUEBA 001|3058|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830036108                |CONTRAPARTE PRUEBA 001|3060|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830036108                |CONTRAPARTE PRUEBA 001|3064|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830036108                |CONTRAPARTE PRUEBA 001|3073|andres perez vasquez|credito   nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830036108                |CONTRAPARTE PRUEBA 001|3074|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830036108                |CONTRAPARTE PRUEBA 001|3075|andres perez vasquez|cliente nuevo|pendientesx|sin documentos|2020/09/10|2020/09/10
-830001001                | CONTRAPARTE 002|3081|andres perez vasquez|credito   nuevo|pendientesx|sin documentos|2021/02/24|2021/02/24
-830001001                | CONTRAPARTE 002|3084|andres perez vasquez|cliente nuevo|repetido|sin documentos|2021/02/26|2021/02/26
-830001001                | CONTRAPARTE 002|3085|MARIETA PAZ|cliente nuevo|pendientesx|sin documentos|2021/02/26|2021/02/26
-830001001                | CONTRAPARTE 002|3087|MARIETA PAZ|cliente nuevo|pendientesx|sin documentos|2021/02/26|2021/02/26
+830112250                | RIO TECHNOLOGY S A S|2|MONICA ÑUSTES|Actualizacion Datos|Datos Actulizados|Cupo Controlado|2021/06/02|2021/06/02
+80723553                 | JAIMES BACCA EDIER DARIO|3|MONICA ÑUSTES|Negocio Puntual|Devuelto|Ilegalidad|2021/06/18|2021/06/21
+80723553                 | JAIMES BACCA EDIER DARIO|4|NESTOR OSPINO|Actualizacion Datos|Cupo Asignado Factura|Ilegalidad|2021/06/21|2021/10/14
+80723553                 | JAIMES BACCA EDIER DARIO|1006|NESTOR OSPINO|Cliente Nuevo|ROS|No Anexa EEFF Actualizados|2021/10/14|2021/10/14
+80723553                 | JAIMES BACCA EDIER DARIO|1008|NESTOR OSPINO|Cliente Nuevo|Reactivado|Cupo Controlado|2021/10/14|2021/10/14
+80723553                 | JAIMES BACCA EDIER DARIO|1009|MONICA ÑUSTES|Cliente Nuevo|Documentos Enviados|Cupo Controlado|2021/10/14|2021/10/14
