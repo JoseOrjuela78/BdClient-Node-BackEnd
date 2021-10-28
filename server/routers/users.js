@@ -69,12 +69,12 @@ app.get('/user/buscarR/:termino', verificaToken, (req, res) => {
 
 
 
-app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
+app.post('/user', [verificaToken, verificaADMIN_ROLE], async(req, res) => {
 
     var request = new mssql.Request();
 
     let body = JSON.parse(req.body.json); // recibe la información json
-    //let body = req.body
+
     let fechaInicio = moment(new Date()).format('YYYYMMDD h:mm:ss');
 
     let escontraparte = body.escontraparte;
@@ -90,8 +90,7 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     let usuaFechaMatricula = moment(body.usuaFechaMatricula).format('YYYYMMDD');
     let usuaFechaNacimiento = moment(body.usuaFechaNacimiento).format('YYYYMMDD');
-    let usuaObservacion = body.usuaObservacion;
-
+    let usuaObservacion = await decodeURIComponent(body.usuaObservacion);
     let usuaOrden = body.usuaOrden;
 
     if (!usuaOrden) {
@@ -138,8 +137,8 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let usuaNumeroIdentificacion = body.usuaNumeroIdentificacion;
     let tipoId = body.tipoIdentificacion;
     let usuaFechaInicio = fechaInicio;
-    let usuaRazonSocial = body.usuaRazonSocial;
-    let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${body.usuaRazonSocial}`;
+    let usuaRazonSocial = await decodeURIComponent(body.usuaRazonSocial);
+    let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${usuaRazonSocial}`;
 
     let municipios;
 
@@ -155,7 +154,7 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     var insert1 = `ALTA_users '${escontraparte}','${usuaPEP}','${usuaFechaMatricula}','${usuaFechaNacimiento}','${usuaObservacion}','${usuaOrden}','${usuaPagare}','${usuaCliente}','${usuaProveedor}','${usuaEmpleado}','${usuaCIIU}','${usuaMail}','${usuario}','${usuaNumeroIdentificacion}','${tipoId}','${usuaFechaInicio}','${usuaRazonSocial}','${usuaConcatenado}','${municipios}','@message output'`
 
-    request.query(insert1, (err, userDB) => {
+    await request.query(insert1, (err, userDB) => {
 
         if (err) {
             return res.status(500).json({
@@ -175,7 +174,7 @@ app.post('/user', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 });
 
 
-app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
+app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], async(req, res) => {
 
 
 
@@ -194,17 +193,17 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         escontraparte = false;
     }
 
-    let usuaPEP = body.esPEP
+    let usuaPEP = body.esPEP;
     if (!usuaPEP) {
         usuaPEP = false;
     } else {
-        usuaPEP = body.esPEP
+        usuaPEP = body.esPEP;
     }
 
 
     let usuaFechaMatricula = body.usuaFechaMatricula;
 
-    if (!usuaFechaMatricula || usuaFechaMatricula == '1899-12-31') {
+    if (!usuaFechaMatricula || usuaFechaMatricula == '1900-01-01') {
         usuaFechaMatricula = '19000101 12:00:00'
     } else {
         usuaFechaMatricula = moment(body.usuaFechaMatricula).format('YYYYMMDD');
@@ -214,14 +213,14 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     let usuaFechaNacimiento = body.usuaFechaNacimiento;
 
-    if (!usuaFechaNacimiento || usuaFechaNacimiento == '1899-12-31') {
+    if (!usuaFechaNacimiento || usuaFechaNacimiento == '1900-01-01') {
         usuaFechaNacimiento = '19000101 12:00:00'
     } else {
         usuaFechaNacimiento = moment(body.usuaFechaNacimiento).format('YYYYMMDD');
     }
 
 
-    let usuaObservacion = body.usuaObservacion;
+    let usuaObservacion = await decodeURIComponent(body.usuaObservacion);
 
     let usuaOrden = body.usuaOrden;
 
@@ -269,8 +268,8 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
     let usuaNumeroIdentificacion = id;
     let tipoId = body.tipoIdentificacion;
     let usuaFechaActualizacion = fechaInicio;
-    let usuaRazonSocial = body.usuaRazonSocial;
-    let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${body.usuaRazonSocial}`;
+    let usuaRazonSocial = await decodeURIComponent(body.usuaRazonSocial);
+    let usuaConcatenado = `${body.usuaNumeroIdentificacion} ${usuaRazonSocial}`;
 
     let municipios;
 
@@ -289,7 +288,7 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     var insert1 = `UPDATE_users '${usuaFechaActualizacion}','${escontraparte}','${usuaPEP}','${usuaFechaMatricula}','${usuaFechaNacimiento}','${usuaObservacion}','${usuaOrden}','${usuaPagare}','${usuaCliente}','${usuaProveedor}','${usuaEmpleado}','${usuaCIIU}','${usuaMail}','${usuario}','${usuaNumeroIdentificacion}','${tipoId}','${usuaRazonSocial}','${usuaConcatenado}','${municipios}','@message output'`
 
-    request.query(insert1, (err, userDB) => {
+    await request.query(insert1, (err, userDB) => {
 
         if (err) {
             return res.status(500).json({
@@ -302,7 +301,7 @@ app.put('/user/:nit', [verificaToken, verificaADMIN_ROLE], (req, res) => {
             ok: true,
             userDB,
             message: 'Usuario Actualizado'
-        })
+        });
 
     });
 

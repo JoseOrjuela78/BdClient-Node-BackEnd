@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var moment = require('moment');
 var request = require('request');
+const { nextTick } = require('process');
 
 let token;
 
@@ -30,6 +31,10 @@ const pruebaToken = (rep, res) => {
 
 
                 token = JSON.parse(response.body).token;
+
+                if (!token) {
+                    next();
+                }
 
 
 

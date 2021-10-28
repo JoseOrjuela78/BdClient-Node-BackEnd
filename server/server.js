@@ -49,7 +49,7 @@ var config = {
 
 /*
 
-para activar en produccion
+//para activar en produccion
 
 var config = {
     user: 'SACARTERA',
@@ -58,9 +58,10 @@ var config = {
     port: 50063,
     database: 'SEDCartera',
     options: {
-        enableArithAbort: true
+        enableArithAbort: true,
+        encrypt: false
     }
-}
+};
 
 */
 

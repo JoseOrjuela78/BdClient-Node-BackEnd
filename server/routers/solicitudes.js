@@ -93,7 +93,7 @@ app.get('/solicitudes/estado/:id', verificaToken, (req, res) => {
 });
 
 
-app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
+app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], async(req, res) => {
 
     var request = new mssql.Request();
     let body = JSON.parse(req.body.json); // recibe la información json
@@ -168,7 +168,7 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         soliFechaRecibidoPagare = '19000101 12:00:00'
     }
 
-    let soliComentarios = body.soliComentarios;
+    let soliComentarios = await decodeURIComponent(body.soliComentarios);
     if (!soliComentarios) {
         soliComentarios = "Sin Comentario"
     }
@@ -192,13 +192,13 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     let estadoId = body.IdEstado;
 
-    actualizarPagare(contNumeroIdentificacion, estadoId);
+    await actualizarPagare(contNumeroIdentificacion, estadoId);
 
     let causalId = body.IdCausal;
 
     let insert1 = `ALTA_solicitudes '${soliActualizacion}','${soliFechaExpedicionCcio}','${soliAnoRenovado}','${soliApruebaFormato}','${soliApruebaListasRestrictivas}','${soliApruebaDatacredito}','${soliApruebaCartera}','${soliApruebaReferencias}','${soliFechaRadicacion}','${soliFechaSolucion}','${soliCupoAprobado}','${soliCupoAsignado}','${soliFechaEnvioPagare}','${soliFechaRecibidoPagare}','${soliComentarios}','${usuario}','${soliFecha}','${ejecutivoId}','${tipoSolicitudId}','${contNumeroIdentificacion}','${soliCupoActual}','${soliCupoSolicitado}','${estadoId}','${causalId}','message OUTPUT'`
 
-    request.query(insert1, (err, solicitudDB) => {
+    await request.query(insert1, (err, solicitudDB) => {
 
         if (err) {
             return res.status(500).json({
@@ -221,7 +221,7 @@ app.post('/solicitud', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
 
 
-app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
+app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], async(req, res) => {
 
 
     var request = new mssql.Request();
@@ -299,7 +299,7 @@ app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
         soliFechaRecibidoPagare = '19000101 12:00:00'
     }
 
-    let soliComentarios = body.soliComentarios;
+    let soliComentarios = await decodeURIComponent(body.soliComentarios);
     if (!soliComentarios) {
         soliComentarios = "Sin Comentario"
     }
@@ -322,13 +322,13 @@ app.put('/solicitud/:id', [verificaToken, verificaADMIN_ROLE], (req, res) => {
 
     let estadoId = body.IdEstado;
 
-    actualizarPagare(contNumeroIdentificacion, estadoId);
+    await actualizarPagare(contNumeroIdentificacion, estadoId);
 
     let causalId = body.IdCausal;
 
     let insert1 = `UPDATE_solicitudes '${soliConsecutivo}','${soliActualizacion}','${soliFechaExpedicionCcio}','${soliAnoRenovado}','${soliApruebaFormato}','${soliApruebaListasRestrictivas}','${soliApruebaDatacredito}','${soliApruebaCartera}','${soliApruebaReferencias}','${soliFechaRadicacion}','${soliFechaSolucion}','${soliCupoAprobado}','${soliCupoAsignado}','${soliFechaEnvioPagare}','${soliFechaRecibidoPagare}','${soliComentarios}','${usuario}','${ejecutivoId}','${tipoSolicitudId}','${contNumeroIdentificacion}','${soliCupoActual}','${soliCupoSolicitado}','${estadoId}','${causalId}','message OUTPUT'`
 
-    request.query(insert1, (err, solicitudDB) => {
+    await request.query(insert1, (err, solicitudDB) => {
 
         if (err) {
             return res.status(500).json({
